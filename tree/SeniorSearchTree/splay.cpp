@@ -1,4 +1,13 @@
 #include "../BST/BST.h"
+
+/* 【伸展树】
+ * 树的node为n，查找m次，命中k个数据
+ * 局部性很强，缓存命中率极高时（k << n << m）
+ * 效率甚至可更高，达到O(logk), 命中的k个数据全部在顶部
+ * 任何连续m次查找都可在O(mlogk + nlogn)时间内完成，其中nlogn为调整时间
+ *
+ * 但是仍不能保证单次最坏情况的出现，不适用于效率敏感场景
+ * */
 template <typename T> class Splay : public BST<T> {
     protected: 
         BinNodePosi(T) splay(BinNodePosi(T) v);
